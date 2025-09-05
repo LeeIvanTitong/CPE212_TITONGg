@@ -1,0 +1,42 @@
+---
+- name: Lab 4 Task 1 - Package Management
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update package cache (apt update)
+      apt:
+        update_cache: yes
+
+    - name: Install vim-nox package
+      apt:
+        name: vim-nox
+        state: present
+
+    - name: Verify vim installation
+      command: which vim
+      register: vim_path
+      
+    - name: Show vim installation path
+      debug:
+        var: vim_path.stdout
+
+    - name: Check vim-nox package info
+      command: apt search vim-nox
+      register: vim_info
+      
+    - name: Show vim package info
+      debug:
+        var: vim_info.stdout
+
+    - name: Check APT history logs
+      command: cat /var/log/apt/history.log
+      register: apt_history
+      
+    - name: Show APT history
+      debug:
+        var: apt_history.stdout
+
+    - name: Install snapd (latest version)
+      apt:
+        name: snapd
+        state: latest
