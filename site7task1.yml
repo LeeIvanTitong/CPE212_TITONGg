@@ -1,0 +1,24 @@
+- hosts: web_servers
+  become: true
+  tasks:
+    - name: Install Apache web server
+      package:
+        name: "{{ apache_package }}"
+        state: present
+    
+    - name: Start and enable Apache service
+      service:
+        name: "{{ apache_service }}"
+        state: started
+        enabled: yes
+    
+    # NEW TASK ADDED HERE
+    - name: copy default html file for site
+      tags: apache, apache2, httpd
+      copy:
+        src: default_site.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+
