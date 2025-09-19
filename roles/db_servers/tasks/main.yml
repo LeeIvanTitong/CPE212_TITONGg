@@ -1,0 +1,5 @@
+---
+# Database server tasks will be added here
+- name: Placeholder for database server tasks
+  debug:
+    msg: "Database server tasks will be implemented here"

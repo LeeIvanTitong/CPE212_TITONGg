@@ -1,0 +1,21 @@
+---
+# Web server specific tasks
+- name: Install Apache web server
+  package:
+    name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+    state: present
+
+- name: Start and enable Apache service
+  service:
+    name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+    state: started
+    enabled: yes
+
+- name: copy default html file for site
+  tags: apache, apache2, httpd
+  copy:
+    src: ../../files/default_site.html
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: 0644

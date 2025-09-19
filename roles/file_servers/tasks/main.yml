@@ -1,0 +1,6 @@
+---
+# File server tasks will be added here
+- name: Placeholder for file server tasks
+  debug:
+    msg: "File server tasks will be implemented here"
+
