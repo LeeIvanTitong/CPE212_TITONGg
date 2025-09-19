@@ -1,0 +1,21 @@
+[web_servers]
+192.168.56.110 ansible_user=TITONG # Server1
+192.168.56.111 ansible_user=TITONG # Server2
+192.168.56.115 ansible_user=TITONG  # Server3
+192.168.56.113 ansible_user=titong_leeivan ansible_password=changeme2025
+
+[db_servers] 
+192.168.56.113 ansible_user=titong_leeivan ansible_password=changeme2025
+192.168.56.110 ansible_user=TITONG # Server1
+192.168.56.111 ansible_user=TITONG # Server2
+192.168.56.115 ansible_user=TITONG  # Server3
+
+[file_servers]
+192.168.56.113 ansible_user=titong_leeivan ansible_password=changeme2025
+192.168.56.110 ansible_user=TITONG # Server1
+192.168.56.111 ansible_user=TITONG # Server2
+192.168.56.115 ansible_user=TITONG  # Server3
+
+[all:vars]
+ansible_become=true
+ansible_become_password=changeme

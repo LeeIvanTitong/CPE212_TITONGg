@@ -1,0 +1,19 @@
+# CORRECT STRUCTURE
+- hosts: web_servers  # This is a play
+  become: true        # This is a play attribute
+  tasks:              # This starts the list of tasks for this play
+    - name: install apache and php for CentOS servers  # This is a task
+      tags: apache, centos, httpd
+      dnf:                                            # This is a task module
+        name:
+          - httpd
+          - php
+        state: latest
+      when: ansible_distribution == "CentOS"          # This applies to the task above
+
+    - name: start httpd (CentOS)  # This is another task
+      tags: apache, centos, httpd
+      service:
+        name: httpd
+        state: started
+      when: ansible_distribution == "CentOS"

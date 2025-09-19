@@ -1,0 +1,8 @@
+- name: Install Samba on File Servers  # A descriptive name for the play is recommended
+  hosts: file_servers
+  become: true
+  tasks:
+    - name: Install samba package
+      package:
+        name: samba
+        state: latest
